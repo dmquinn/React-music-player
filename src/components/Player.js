@@ -1,67 +1,66 @@
 import React, { useState, useRef, useEffect } from "react";
 import PlayerDetails from "./PlayerDetails";
 import PlayerControls from "./PlayerControls";
+import PlayerImage from "./PlayerImage";
+import Playlist from "./Playlist";
 
-function Player(props) {
-	const audioEl = useRef(null);
-	const [isPlaying, setIsPlaying] = useState(false);
+function Player({ currentSongIndex, songs, setCurrentSongIndex }) {
+  const audioEl = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-	useEffect(() => {
-		if (isPlaying) {
-			audioEl.current.play();
-		} else {
-			audioEl.current.pause();
-		}
-	});
+  useEffect(() => {
+    if (isPlaying) {
+      audioEl.current.play();
+    } else {
+      audioEl.current.pause();
+    }
+  });
 
-	const SkipSong = (forwards = true) => {
-		if (forwards) {
-			props.setCurrentSongIndex(() => {
-				let temp = props.currentSongIndex;
-				temp++;
+  const SkipSong = (forwards = true) => {
+    if (forwards) {
+      setCurrentSongIndex(() => {
+        let temp = currentSongIndex;
+        temp++;
 
-				if (temp > props.songs.length - 1) {
-					temp = 0;
-				}
+        if (temp > songs.length - 1) {
+          temp = 0;
+        }
 
-				return temp;
-			});
-		} else {
-			props.setCurrentSongIndex(() => {
-				let temp = props.currentSongIndex;
-				temp--;
+        return temp;
+      });
+    } else {
+      setCurrentSongIndex(() => {
+        let temp = currentSongIndex;
+        temp--;
 
-				if (temp < 0) {
-					temp = props.songs.length - 1;
-				}
+        if (temp < 0) {
+          temp = songs.length - 1;
+        }
 
-				return temp;
-			});
-		}
-	};
+        return temp;
+      });
+    }
+  };
 
-	return (
-		<div>
-			<audio
-				src={props.songs[props.currentSongIndex].src}
-				ref={audioEl}
-			></audio>
-			<h4>Playing now</h4>
-			<PlayerDetails song={props.songs[props.currentSongIndex]} />
-			<PlayerControls
-				isPlaying={isPlaying}
-				setIsPlaying={setIsPlaying}
-				SkipSong={SkipSong}
-			/>
-			<p>
-				Next up:{" "}
-				<span>
-					{props.songs[props.nextSongIndex].title} by{" "}
-					{props.songs[props.nextSongIndex].artist}
-				</span>
-			</p>
-		</div>
-	);
+  return (
+    <>
+      <audio src={songs[currentSongIndex].src} ref={audioEl}></audio>
+      <div className="player">
+        <div className="left">
+          <PlayerImage song={songs[currentSongIndex]} />
+          <PlayerControls
+            isPlaying={isPlaying}
+            setIsPlaying={setIsPlaying}
+            SkipSong={SkipSong}
+          />
+        </div>
+        <div className="detailsPlaylist">
+          <PlayerDetails song={songs[currentSongIndex]} />
+          <Playlist songs={songs} setCurrentSongIndex={setCurrentSongIndex} />
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Player;

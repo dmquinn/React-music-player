@@ -1,17 +1,21 @@
 import React from "react";
 
-function PlayerDetails(props) {
-	const backgroundImage = {
-		backgroundImage: "url(" + props.song.img_src + ")",
-	};
-	return (
-		<div className="player" style={backgroundImage}>
-			<div className="details">
-				<h3 className="details-title">{props.song.title}</h3>
-				<h4 className="details-artist">{props.song.artist}</h4>
-			</div>
-		</div>
-	);
+function PlayerDetails({ song }) {
+  const backgroundImage = {
+    backgroundImage: "url(" + song.img_src + ")",
+  };
+  return (
+    <>
+      <div className="backdropImage" style={backgroundImage}>
+        {" "}
+      </div>
+
+      <div className="details">
+        <h1 className="details-artist">{song.title}</h1>
+        <h3 className="details-title">{song.artist}</h3>
+      </div>
+    </>
+  );
 }
 
 export default PlayerDetails;
