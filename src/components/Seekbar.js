@@ -1,32 +1,28 @@
 import React from "react";
+import Volume from "./Volume";
 
-const SeekBar = ({ duration, time, audioEl }) => {
+
+const SeekBar = ({ duration, time, audioEl, volume }) => {
   return (
     <div>
       <div className="player-controls">
-        <div className="controls-time">
-          <span>
-            {Math.floor(time / 60)}:{Math.floor(time % 60)}
-          </span>
-
-          <div className="time-input">
-            <input
-              className="progress"
-              type="range"
-              min={0}
-              max={duration}
-              value={time}
-              // readOnly
-              onChange={(e) => {
-                audioEl.current.currentTime = e.target.value;
-              }}
-            />
-          </div>
-
-          <span>
-            {Math.floor(duration / 60)}:{Math.floor(duration % 60)}
-          </span>
+        <span>
+          {Math.floor(time / 60)}:{Math.floor(time % 60)}
+        </span>
+        <div className="timeInput">
+          <input
+            className="progress"
+            type="range"
+            min={0}
+            max={duration}
+            value={time}
+            onChange={(e) => {
+              audioEl.current.currentTime = e.target.value;
+            }}
+          />
         </div>
+
+        <Volume audioEl={audioEl} volume={volume} />
       </div>
     </div>
   );

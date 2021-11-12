@@ -5,7 +5,6 @@ import PlayerControls from "./PlayerControls";
 import PlayerImage from "./PlayerImage";
 import Playlist from "./Playlist";
 import Seekbar from "./Seekbar";
-import Volume from "./Volume";
 
 function Player({ currentSongIndex, songs, setCurrentSongIndex }) {
   const audioEl = useRef(null);
@@ -100,7 +99,6 @@ function Player({ currentSongIndex, songs, setCurrentSongIndex }) {
       </div>
       <div classname="playControls">
         <Seekbar duration={duration} time={time} audioEl={audioEl} />
-        <Volume audioEl={audioEl} volume={volume} />
       </div>
     </>
   );

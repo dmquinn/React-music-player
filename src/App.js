@@ -4,24 +4,24 @@ import Player from "./components/Player";
 function App() {
   const [songs] = useState([
     {
-      title: "Song One",
-      artist: "Sweaty Lads",
+      title: "Salamander",
+      artist: "Anomaly Brain",
       img_src:
         "https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
       src: "./scandydrama1.wav",
     },
     {
-      title: "Barry's Chant",
-      artist: "Big Barry",
+      title: "Sumo Envy",
+      artist: "Cavities",
       img_src:
         "https://images.unsplash.com/photo-1549873836-765d3157c324?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
       src: "./scandydrama2.wav",
     },
     {
-      title: "Throbbing Thistle",
-      artist: "NewBuild",
+      title: "Dobbing Whistle",
+      artist: "NewBuild in Glasgow",
       img_src:
-        "https://images.unsplash.com/flagged/photo-1553095292-127dfadb8275?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+        "https://images.unsplash.com/photo-1565626424178-c699f6601afd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80",
       src: "./scandydrama3.mp3",
     },
   ]);

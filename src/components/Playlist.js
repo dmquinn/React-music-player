@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Playlist = ({ songs, setCurrentSongIndex }) => {
+const Playlist = ({ songs, setCurrentSongIndex, duration }) => {
   const [selected, setSelected] = useState(0);
   const handleClick = (index) => {
     setSelected(index);
